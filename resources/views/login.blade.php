@@ -43,7 +43,7 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="http://localhost/riset/vivet/public/img/lotus.webp"
+                  <img src="img/lotus.webp"
                     style="width: 185px;" alt="logo">
                   <h4 class="mt-1 mb-5 pb-1">Sekolah Kedokteran Hewan Biomedis</h4>
                 </div>
@@ -56,7 +56,7 @@
                     <!-- <input type="email" id="form2Example11" class="form-control"
                       placeholder="email address" />
                     <label class="form-label" for="form2Example11">Username</label> -->
-                    {{ Form::email('alamatemail', old('alamatemail'), ['class'=>'form-control', 'placeholder'=>'contoh@email.com', 'required'=>'required', 'autofocus']) }}                   
+                    {{ Form::email('alamatemail', old('alamatemail'), ['class'=>'form-control', 'placeholder'=>'contoh@email.com', 'required'=>'required', 'autofocus']) }}
                   </div>
                   @if ($errors->has('alamatemail'))
                       {{ Form::label('alamatemail', $errors->first('alamatemail'), ['id'=>'email-error', 'class'=>'error']) }}
@@ -65,7 +65,7 @@
                     <!-- <input type="password" id="form2Example22" class="form-control" />
                     <label class="form-label" for="form2Example22">Password</label> -->
                     {{ Form::password('password', ['class'=>'form-control', 'placeholder'=>'password', 'required'=>'required']) }}
-                                       
+
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
