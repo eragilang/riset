@@ -24,10 +24,11 @@ services:
         ports:
             - "8000:8000"
         environment:
-            - DB_HOST=mariadb
+            - DB_HOST=db
             - DB_PORT=3306
-            - DB_USERNAME=bn_myapp
-            - DB_DATABASE=bitnami_myapp
+            - DB_USERNAME=root
+            - DB_DATABASE=laravel
+            - DB_PASSWORD=your_mysql_root_password
         volumes:
             - ".:/app"
         depends_on:
