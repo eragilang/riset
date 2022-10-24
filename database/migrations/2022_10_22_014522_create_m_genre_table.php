@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('m_genre', function (Blueprint $table) {
             $table->id();
-            $table->string('genre')->unique();
+            $table->string('genre', 190)->unique();
             $table->text('keterangan');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
