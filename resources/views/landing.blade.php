@@ -14,7 +14,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -61,13 +61,25 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-
           <li class="dropdown"><a href="#"><span>Home</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="index.html" class="active">Home 1 - index.html</a></li>
-              <li><a href="index-2.html">Home 2 - index-2.html</a></li>
-              <li><a href="index-3.html">Home 3 - index-3.html</a></li>
-              <li><a href="index-4.html">Home 4 - index-4.html</a></li>
+                @auth
+                    @role('admin')
+                        <li><x-dropdown-link :href="route('users.index')">{{ __('Pengguna') }}</x-dropdown-link></li>
+                        {{-- <x-dropdown-link :href="route('roles.index')">{{ __('Roles') }}</x-dropdown-link> --}}
+                    @endrole
+                    <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
+                @endauth
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <li><x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link></li>
+                </form>
             </ul>
           </li>
 
@@ -204,14 +216,14 @@
           <div class="col-lg-7">
             <h3 class="pt-0 pt-lg-5">Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
 
-            
+
             <ul class="nav nav-pills mb-3">
               <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Saepe fuga</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Voluptates</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">Corrupti</a></li>
             </ul>
 
-            
+
             <div class="tab-content">
 
               <div class="tab-pane fade show active" id="tab1">
@@ -294,7 +306,7 @@
 
       </div>
     </section> -->
-    
+
     <!-- End About Section -->
 
     <!-- ======= Clients Section ======= -->
@@ -316,7 +328,7 @@
 
       </div>
     </section> -->
-    
+
     <!-- End Clients Section -->
 
     <!-- ======= Call To Action Section ======= -->
@@ -341,7 +353,7 @@
 
       </div>
     </section> -->
-    
+
     <!-- End Call To Action Section -->
 
     <!-- ======= On Focus Section ======= -->
@@ -371,11 +383,11 @@
 
       </div>
     </section> -->
-    
+
     <!-- End On Focus Section -->
 
 
-    
+
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio" data-aos="fade-up">
 
@@ -395,110 +407,28 @@
   <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
 
     <ul class="portfolio-flters">
-      <li data-filter="*" class="filter-active">All</li>
-      <li data-filter=".filter-mamalia">Mamalia</li>
+        <li data-filter="*" class="filter-active">All</li>
+        @foreach ($genre as $row)
+            <li data-filter=".filter-{{ $row->id }}">{{ ucfirst($row->genre) }}</li>
+        @endforeach
+
+      {{-- <li data-filter=".filter-mamalia">Mamalia</li>
       <li data-filter=".filter-ikan">Ikan</li>
       <li data-filter=".filter-branding">Serangga</li>
-      <li data-filter=".filter-books">Unggas</li>
+      <li data-filter=".filter-books">Unggas</li> --}}
     </ul><!-- End Portfolio Filters -->
 
     <div class="row g-0 portfolio-container">
-
-      
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-mamalia">
-        <img src="img/kuda.jpeg" class="h-50 img-thumbnail" alt="">
-        <div class="portfolio-info">
-          <h4>Kuda</h4>
-          <a href="img/kuda.jpeg" title="Hewan Kuda" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-mamalia">
-        <img src="img/sapi.jpg" class="h-50 img-thumbnail" alt="">
-        <div class="portfolio-info">
-          <h4>Sapi</h4>
-          <a href="img/sapi.jpg" title="Sapi" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-        <img src="hero/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Branding 1</h4>
-          <a href="hero/assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-        <img src="hero/assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Books 1</h4>
-          <a href="hero/assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-ikan">
-        <img src="img/hiu.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Ikan Hiu</h4>
-          <a href="img/hiu.jpg" title="Ikan Hiu" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-        <img src="hero/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Branding 2</h4>
-          <a href="hero/assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-        <img src="hero/assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Books 2</h4>
-          <a href="hero/assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
-        <img src="hero/assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Product 3</h4>
-          <a href="hero/assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-        <img src="hero/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Branding 3</h4>
-          <a href="hero/assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
-      <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-        <img src="hero/assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <h4>Books 3</h4>
-          <a href="hero/assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-        </div>
-      </div><!-- End Portfolio Item -->
-
+        @foreach ($hewan as $row)
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{ $row->id_genre }}">
+                <img src="{{ $row->objek }}" class="h-50 img-fluid" alt="">
+                <div class="portfolio-info">
+                <h4>{{ $row->nama }}</h4>
+                <a href="{{ $row->objek }}" title="Hewan {{ $row->nama }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+            </div><!-- End Portfolio Item -->
+        @endforeach
     </div><!-- End Portfolio Container -->
 
   </div>
@@ -512,43 +442,17 @@
 
         <ul class="nav nav-tabs row gy-4 d-flex">
 
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-              <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Mamalia</h4>
-            </a>
-          </li><!-- End Tab 1 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-            <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Ikan</h4>
-            </a>
-          </li><!-- End Tab 2 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-            <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Amfibi</h4>
-            </a>
-          </li><!-- End Tab 3 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-            <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Reptil</h4>
-            </a>
-          </li>
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-            <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Serangga</h4>
-            </a>
-          </li>
+            @foreach ($genre as $row)
+                <li class="nav-item col-6 col-md-4 col-lg-2">
+                    <a class="nav-link {{ $row->id == '1' ? "active show" : '' }}" data-bs-toggle="tab" data-bs-target="#tab-{{ $row->id }}">
+                    <i class="bi bi-binoculars color-cyan"></i>
+                    <h4>{{ ucfirst($row->genre) }}</h4>
+                    </a>
+                </li><!-- End Tab 1 Nav -->
+            @endforeach
 
 
-          <!-- 
+          <!--
           <li class="nav-item col-6 col-md-4 col-lg-2">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
               <i class="bi bi-easel color-blue"></i>
@@ -562,37 +466,40 @@
               <h4>Reprehit</h4>
             </a>
           </li> -->
-          
-          
+
+
 
         </ul>
 
         <div class="tab-content">
+            @foreach ($genre as $row)
+                <div class="tab-pane {{ $row->id == 1 ? 'active show' : '' }}" id="tab-{{ $row->id }}">
+                    <div class="row gy-4">
+                    <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                        <h3>{{ ucfirst($row->genre) }}</h3>
+                        <p class="fst-italic">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua.
+                        </p>
+                        <ul>
+                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                        <p>
+                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                    </div>
+                    <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="assets/img/features-1.svg" alt="" class="img-fluid">
+                    </div>
+                    </div>
+                </div><!-- End Tab Content 1 -->
 
-          <div class="tab-pane active show" id="tab-1">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                <h3>Modinest</h3>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                <img src="assets/img/features-1.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 1 -->
+            @endforeach
+
 
           <div class="tab-pane" id="tab-2">
             <div class="row gy-4">
@@ -726,10 +633,10 @@
     </section><!-- End Features Section -->
 
     <!-- ======= Services Section ======= -->
-    
+
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    {{-- <section id="testimonials" class="testimonials">
       <div class="container" data-aos="fade-up">
 
         <div class="testimonials-slider swiper">
@@ -820,16 +727,16 @@
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End Testimonials Section --> --}}
 
-    
 
-    
+
+
 
 
 
     <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq">
+    {{-- <section id="faq" class="faq">
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="row gy-4">
@@ -994,18 +901,18 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Team Section --> --}}
 
-    
+
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
-    <div class="footer-content">
+    {{-- <div class="footer-content">
       <div class="container">
-        <div class="row">
+        {{-- <div class="row">
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
@@ -1052,14 +959,14 @@
 
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <div class="footer-legal text-center">
       <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
 
         <div class="d-flex flex-column align-items-center align-items-lg-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Eragilang</span></strong>. All Rights Reserved
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->
