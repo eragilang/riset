@@ -18,6 +18,21 @@
             </div>
 
             <div class="col-span-6">
+                <label for="email-address" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" autocomplete="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                @error('password')
+                    <div class="text-sm text-red-700 mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-span-6">
+                <label for="email-address" class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
+                <input type="password" name="password_confirmation" id="confirm-password" autocomplete="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                @error('password_confirmation')
+                    <div class="text-sm text-red-700 mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-span-6">
                 <label for="first-name" class="block text-sm font-medium text-gray-700">Alamat</label>
                 <div class="mt-1">
                     <textarea id="alamat" name="alamat" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('alamat', $user->alamat) }}</textarea>
@@ -30,9 +45,9 @@
 
             <div class="col-span-6 sm:col-span-3">
                 <label for="country" class="block text-sm font-medium text-gray-700">Role</label>
-                <select name="role" autocomplete="roles" value="{{ old('role', $user->roles->first() ) }}"class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                <select name="role" autocomplete="roles" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                     @foreach ($roles as $role)
-                        <option value="{{$role->name }}">{{ ucfirst($role->name) }}</option>
+                        <option {{ old('role', $user->roles->first()->name ) == $role->name ? 'selected' : ''}} value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
                     @endforeach
                 </select>
                 @error('role')

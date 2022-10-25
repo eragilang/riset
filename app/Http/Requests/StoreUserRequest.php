@@ -32,6 +32,7 @@ class StoreUserRequest extends FormRequest
             'email' => 'required|email:rfc,dns|unique:users,email',
             'role' => ['required', ValidationRule::in($roles)],
             'status' => 'nullable',
+            'password' => 'required|confirmed|min:6'
             // 'username' => 'required|unique:users,username',
         ];
     }

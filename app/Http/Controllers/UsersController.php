@@ -98,7 +98,8 @@ class UsersController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request)
     {
-        $user->update($request->validated());
+        $data = $request->validated();
+        $user->update($data);
 
         $user->syncRoles($request->get('role'));
 

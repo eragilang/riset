@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use App\Models\Hewan;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class FrontController extends Controller
 {

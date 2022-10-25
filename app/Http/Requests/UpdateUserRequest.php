@@ -36,6 +36,7 @@ class UpdateUserRequest extends FormRequest
             'alamat' => 'required',
             'role' => ['required', Rule::in($roles)],
             'status' => 'nullable',
+            'password' => 'nullable|confirmed|min:6'
         ];
     }
 }

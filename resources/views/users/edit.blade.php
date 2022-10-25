@@ -31,7 +31,7 @@
                     </div>
                 @endif
                 <div class="mt-5 md:col-span-2 md:mt-0">
-                    <form action="{{ route('hewan.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         @include('users.form')

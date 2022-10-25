@@ -17,11 +17,27 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'alamat' => '',
             'password' => 'admin',
+            'status' => 1,
+        ]);
+
+        $dosen = User::create([
+            'name' => 'Dosen',
+            'email' => 'dosen@gmail.com',
+            'alamat' => '',
+            'password' => 'dosen',
+            'status' => 1,
+        ]);
+
+        $user = User::create([
+            'name' => 'User',
+            'email' => 'user@gmail.com',
+            'alamat' => '',
+            'password' => 'user',
             'status' => 1,
         ]);
 
@@ -37,8 +53,13 @@ class CreateAdminUserSeeder extends Seeder
 
         $permissions = Permission::pluck('id','id')->all();
 
-        $adminRole->syncPermissions($permissions);
+        $permissionDosen = Permission::where('name', 'like', '%hewan.%')->get()->pluck('id', 'id');
 
-        $user->assignRole([$adminRole->id]);
+        $adminRole->syncPermissions($permissions);
+        $dosenRole->syncPermissions($permissionDosen);
+
+        $admin->assignRole([$adminRole->id]);
+        $dosen->assignRole([$dosenRole->id]);
+        $user->assignRole([$userRole->id]);
     }
 }

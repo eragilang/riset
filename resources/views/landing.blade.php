@@ -66,9 +66,12 @@
                 @auth
                     @role('admin')
                         <li><x-dropdown-link :href="route('users.index')">{{ __('Pengguna') }}</x-dropdown-link></li>
+                        <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
                         {{-- <x-dropdown-link :href="route('roles.index')">{{ __('Roles') }}</x-dropdown-link> --}}
                     @endrole
+                    @role('dosen')
                     <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
+                    @endrole
                 @endauth
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
