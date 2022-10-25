@@ -47,9 +47,16 @@ class HewanController extends Controller
         //For demo purposes only. When creating hewan or inviting a hewan
         // you should create a generated random password and email it to the hewan
 
+        $data = $request->validated();
 
-        $hewan->create(array_merge($request->validated(), []));
+        if($request->file('objek')){
+            $file= $request->file('objek');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('img'), $filename);
+            $data['objek']= $filename;
+        }
 
+        $hewan->create($data);
 
         return redirect()->route('hewan.index')
             ->withSuccess(__('Hewan berhasil ditambahkan.'));
@@ -94,7 +101,17 @@ class HewanController extends Controller
      */
     public function update(Hewan $hewan, UpdateHewanRequest $request)
     {
-        $hewan->update($request->validated());
+        $data = $request->validated();
+
+        if($request->file('objek')){
+            $file= $request->file('objek');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('img'), $filename);
+            $data['objek']= $filename;
+        }
+
+        $hewan->update($data);
+
 
         return redirect()->route('hewan.index')
             ->withSuccess(__('Hewan berhasil diubah.'));

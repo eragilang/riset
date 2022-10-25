@@ -30,7 +30,7 @@ class StoreHewanRequest extends FormRequest
         return [
             'nama' => 'required',
             'keterangan' => 'required',
-            'objek' => 'required',
+            'objek' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'id_genre' => ['required', ValidationRule::in($genre)],
             'status' => 'nullable',
             'vr'=>'nullable',

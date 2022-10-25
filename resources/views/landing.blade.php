@@ -421,10 +421,10 @@
     <div class="row g-0 portfolio-container">
         @foreach ($hewan as $row)
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{ $row->id_genre }}">
-                <img src="{{ $row->objek }}" class="h-50 img-fluid" alt="">
+                <img src="{{ asset('img/'.$row->objek) }}" class="h-50 img-fluid" alt="">
                 <div class="portfolio-info">
                 <h4>{{ $row->nama }}</h4>
-                <a href="{{ $row->objek }}" title="Hewan {{ $row->nama }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{ asset('img/'.$row->objek) }}" title="Hewan {{ $row->nama }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
             </div><!-- End Portfolio Item -->
