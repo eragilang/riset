@@ -27,9 +27,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail()
+    public function detail(Hewan $hewan, Request $request)
     {
-        return view('detail_hewan');
+        return view('detail_hewan', compact('hewan'));
     }
 
     /**

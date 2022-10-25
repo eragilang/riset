@@ -33,6 +33,7 @@ class UpdateHewanRequest extends FormRequest
             'keterangan' => 'required',
             'objek' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'id_genre' => ['required', Rule::in($genre)],
+            'editor' => 'nullable',
             'status' => 'nullable',
             'vr'=>'nullable',
         ];

@@ -13,9 +13,25 @@
 <body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <div class="container">
+
+    <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+        <h1>SKHB<span>.</span>IPB</h1>
+    </a>
     <div class="row">
+        <div class="col-md-7">
+            <div class="project-info-box">
+                <p><b>Nama Hewan:</b> {{ $hewan->nama }}</p>
+                <p><b>Genre:</b> {{ ucfirst($hewan->genre->genre) }}</p>
+            </div><!-- / project-info-box -->
+            <div class="row">
+                <div class="col-md-12" id="editor-wrapper" style="height:500px">
+                    {!! $hewan->editor !!}
+                </div>
+            </div>
+            {{-- <img src="https://via.placeholder.com/400x300/FFB6C1/000000" alt="project-image" class="rounded"> --}}
+        </div><!-- / column -->
         <div class="col-md-5">
-            <div class="project-info-box mt-0">
+            <div class="project-info-box">
                 <h5>PROJECT DETAILS</h5>
                 <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
             </div><!-- / project-info-box -->
@@ -28,7 +44,7 @@
                 <p class="mb-0"><b>Budget:</b> $500</p>
             </div><!-- / project-info-box -->
 
-            <div class="project-info-box mt-0 mb-0">
+            {{-- <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">
                     <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
                     <a href="#x" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
@@ -36,16 +52,16 @@
                     <a href="#x" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-pinterest"></i></a>
                     <a href="#x" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
                 </p>
-            </div><!-- / project-info-box -->
+            </div><!-- / project-info-box --> --}}
         </div><!-- / column -->
 
-        <div class="col-md-7">
+        {{-- <div class="col-md-7">
             <img src="https://via.placeholder.com/400x300/FFB6C1/000000" alt="project-image" class="rounded">
             <div class="project-info-box">
                 <p><b>Categories:</b> Design, Illustration</p>
                 <p><b>Skills:</b> Illustrator</p>
             </div><!-- / project-info-box -->
-        </div><!-- / column -->
+        </div><!-- / column --> --}}
     </div>
 </div>
 
@@ -460,7 +476,7 @@ b, strong {
 </style>
 
 <script type="text/javascript">
-
+    $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-100');
 </script>
 </body>
 </html>

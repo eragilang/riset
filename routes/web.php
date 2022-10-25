@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
     Route::get('/', 'FrontController@index')->middleware('auth')->name('dashboard');
-    Route::get('/detail', 'FrontController@detail')->middleware('auth')->name('detail');
+    Route::get('/{hewan}/detail', 'FrontController@detail')->middleware('auth')->name('hewan.detail');
     Route::get('/input', 'FrontController@input')->middleware('auth')->name('input');
 
     Route::group(['middleware' => ['auth', 'permission', 'verified']], function() {
