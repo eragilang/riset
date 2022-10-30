@@ -10,8 +10,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Permission\Models\Role;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
 
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -59,4 +61,13 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function canAccessFilament(): bool
+    {
+        return true;
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return null;
+    }
 }

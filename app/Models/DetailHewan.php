@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Laravel\Scout\Searchable;
 
-class Hewan extends Model
+class DetailHewan extends Model
 {
     use HasFactory;
-    protected $table = 'm_hewan';
+    protected $table = 'd_hewan';
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +19,7 @@ class Hewan extends Model
      */
     protected $fillable = [
         'nama',
-        'id_genre',
+        'id_hewan',
         'keterangan',
         'editor',
         'status',
@@ -30,9 +32,9 @@ class Hewan extends Model
         return $this->belongsTo(Genre::class, 'id_genre', 'id');
     }
 
-    public function details()
+    public function hewan()
     {
-        return $this->hasMany(DetailHewan::class, 'id_hewan', 'id');
+        return $this->belongsTo(Hewan::class, 'id_hewan', 'id');
     }
 
     /**

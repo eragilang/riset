@@ -41,11 +41,7 @@ class CreateAdminUserSeeder extends Seeder
             'status' => 1,
         ]);
 
-        // $users = User::factory()
-        //         ->count(20)
-        //         ->sequence(fn ($sequence) => ['name' => 'Name '.$sequence->index])
-        //         ->create();
-
+        $this->command->info("User Berhasil dibuat");
 
         $adminRole = Role::create(['name' => 'admin']);
         $dosenRole = Role::create(['name' => 'dosen']);
@@ -61,5 +57,7 @@ class CreateAdminUserSeeder extends Seeder
         $admin->assignRole([$adminRole->id]);
         $dosen->assignRole([$dosenRole->id]);
         $user->assignRole([$userRole->id]);
+
+        $this->command->info("Role sudah di tambahkan kepada user.");
     }
 }

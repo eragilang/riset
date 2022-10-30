@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\DetailHewan;
 use App\Models\Genre;
 use App\Models\Hewan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CreateAnimalSeeder extends Seeder
 {
@@ -43,32 +46,49 @@ class CreateAnimalSeeder extends Seeder
             'status' => 1,
         ]);
 
+        $this->command->info("Genre berhasil ditambahkan");
+
         $kuda = Hewan::create([
             'id_genre' => $mamalia->id,
             'nama' => 'Kuda',
-            'objek' => 'kuda.jpeg',
+            'objek' => 'img/kuda.jpeg',
             'editor' => '<div class="sketchfab-embed-wrapper"> <iframe title="Horse-skeleton" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f3cbabd52905467884c6392963be0d38/embed"> </iframe></div>',
             'keterangan' => 'Kuda adalah',
             'status' => 1,
         ]);
 
-        Hewan::create([
+        $kakiKuda = DetailHewan::create([
+            'id_hewan' => $kuda->id,
+            'nama' => 'Kaki Kuda',
+            'keterangan' => '',
+            'editor' => '<div class="sketchfab-embed-wrapper"> <iframe title="kaki_kuda" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/65af4f7b54f74e75a4fce0442edd4d07/embed"> </iframe></div>',
+            'status' => 1,
+        ]);
+
+        Storage::disk('public')->put($kuda->objek, File::get(public_path($kuda->objek)));
+
+        $sapi = Hewan::create([
             'id_genre' => $mamalia->id,
             'nama' => 'Sapi',
-            'objek' => 'sapi.jpg',
+            'objek' => 'img/sapi.jpg',
             'editor' => '',
             'keterangan' => '',
             'status' => 1,
         ]);
 
-        Hewan::create([
+        Storage::disk('public')->put($sapi->objek, File::get(public_path($sapi->objek)));
+
+        $ikan = Hewan::create([
             'id_genre' => $ikan->id,
             'nama' => 'Hiu',
-            'objek' => 'hiu.jpg',
+            'objek' => 'img/hiu.jpg',
             'editor' => '',
             'keterangan' => '',
             'status' => 1,
         ]);
 
+        Storage::disk('public')->put($ikan->objek, File::get(public_path($ikan->objek)));
+
+        $this->command->info("Hewan berhasil ditambahkan");
     }
 }

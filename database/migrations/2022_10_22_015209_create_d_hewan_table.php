@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('objek')->nullable();
             $table->string('voice')->nullable();
             $table->text('editor')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
 
             $table->foreign('id_hewan')

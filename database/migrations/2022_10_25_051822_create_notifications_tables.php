@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('m_genre', function (Blueprint $table) {
-            $table->id();
-            $table->string('genre', 190)->unique();
-            $table->text('keterangan');
-            $table->tinyInteger('status')->default(1);
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('type');
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_genre');
+        Schema::dropIfExists('notifications');
     }
 };

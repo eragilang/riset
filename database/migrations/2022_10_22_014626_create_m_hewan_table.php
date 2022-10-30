@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('voice')->nullable();
             $table->text('editor',100)->nullable();
             $table->tinyInteger('vr')->default(0);
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
