@@ -65,7 +65,7 @@ class CreateAnimalSeeder extends Seeder
             'status' => 1,
         ]);
 
-        Storage::disk('public')->put($kuda->objek, File::get(public_path($kuda->objek)));
+        $this->command->info("Simpan file ".Storage::disk('public')->put($kuda->objek, File::get(public_path($kuda->objek))));
 
         $sapi = Hewan::create([
             'id_genre' => $mamalia->id,
