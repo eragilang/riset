@@ -64,7 +64,7 @@ class Profile extends Page implements Forms\Contracts\HasForms
                             ->password()->confirmed(),
                         Forms\Components\TextInput::make('password_confirmation')->label('Konfirmasi Password'),
                 ]),
-                Forms\Components\TextArea::make('alamat')
+                Forms\Components\Textarea::make('alamat')
                     ->required(),
             ])
         ];
