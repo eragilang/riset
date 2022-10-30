@@ -52,7 +52,11 @@ class HewanResource extends Resource
                                         'attachFiles',
                                         'codeBlock',
                                     ]),
-                                Forms\Components\FileUpload::make('objek')->image()->maxSize(2048)
+                                Forms\Components\FileUpload::make('objek')->image()
+                                    ->imageCropAspectRatio('16:9')
+                                    ->maxSize(2048)
+                                    ->imageResizeTargetWidth('1920')
+                                    ->imageResizeTargetHeight('1080')
                                     ->disk('public')->directory('img')->required(),
                                 Forms\Components\MarkdownEditor::make('editor')->toolbarButtons([
                                     'edit',
