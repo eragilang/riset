@@ -70,7 +70,7 @@ class CreateAnimalSeeder extends Seeder
         $sapi = Hewan::create([
             'id_genre' => $mamalia->id,
             'nama' => 'Sapi',
-            'objek' => 'img/sapi.jpg',
+            'objek' => 'img/sapi-16-9.jpg',
             'editor' => '',
             'keterangan' => 'Sapi adalah',
             'status' => 1,
