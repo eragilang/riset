@@ -32,17 +32,15 @@
         </div><!-- / column -->
         <div class="col-md-5">
             <div class="project-info-box">
-                <h5>PROJECT DETAILS</h5>
-                <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
+                <p class="mb-0">{!! $hewan->keterangan !!}</p>
             </div><!-- / project-info-box -->
 
+            @foreach ($hewan->details as $detail)
             <div class="project-info-box">
-                <p><b>Client:</b> CUPCAKE CO</p>
-                <p><b>Date:</b> 14.02.2020</p>
-                <p><b>Designer:</b> James Doe</p>
-                <p><b>Tools:</b> Illustrator</p>
-                <p class="mb-0"><b>Budget:</b> $500</p>
+                <b>{{ $detail->nama }}</b>
+                <p>{!! $detail->editor !!}</p>
             </div><!-- / project-info-box -->
+            @endforeach
 
             {{-- <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">
@@ -477,6 +475,7 @@ b, strong {
 
 <script type="text/javascript">
     $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-100');
+    $(".sketchfab-embed-wrapper, .sketchfab-embed-wrapper iframe").addClass('w-100 h-100');
 </script>
 </body>
 </html>
