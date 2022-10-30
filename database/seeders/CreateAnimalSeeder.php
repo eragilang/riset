@@ -60,7 +60,7 @@ class CreateAnimalSeeder extends Seeder
         $kakiKuda = DetailHewan::create([
             'id_hewan' => $kuda->id,
             'nama' => 'Kaki Kuda',
-            'keterangan' => '',
+            'keterangan' => 'Kaki Kuda adalah',
             'editor' => '<div class="sketchfab-embed-wrapper"> <iframe title="kaki_kuda" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/65af4f7b54f74e75a4fce0442edd4d07/embed"> </iframe></div>',
             'status' => 1,
         ]);
@@ -72,7 +72,7 @@ class CreateAnimalSeeder extends Seeder
             'nama' => 'Sapi',
             'objek' => 'img/sapi.jpg',
             'editor' => '',
-            'keterangan' => '',
+            'keterangan' => 'Sapi adalah',
             'status' => 1,
         ]);
 
@@ -83,7 +83,7 @@ class CreateAnimalSeeder extends Seeder
             'nama' => 'Hiu',
             'objek' => 'img/hiu.jpg',
             'editor' => '',
-            'keterangan' => '',
+            'keterangan' => 'Hiu adalah',
             'status' => 1,
         ]);
 
