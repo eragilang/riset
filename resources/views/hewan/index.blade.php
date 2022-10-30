@@ -114,7 +114,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-center text-sm text-gray-900 px-6 py-4 whitespace-nowrap" colspan="4">Data post tidak tersedia</td>
+                                <td class="text-center text-sm text-gray-900 px-6 py-4 whitespace-nowrap" colspan="4">Data hewan tidak tersedia</td>
                             </tr>
                         @endforelse
                         </tbody>

@@ -118,15 +118,18 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-center text-sm text-gray-900 px-6 py-4 whitespace-nowrap" colspan="4">Data post tidak tersedia</td>
+                                <td class="text-center text-sm text-gray-900 px-6 py-4 whitespace-nowrap" colspan="4">Data pengguna tidak tersedia</td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
                 </div>
-                <div class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800 rounded-b-xl"">
-                    {{ $users->links() }}
-                </div>
+
+                @if ($users->links())
+                    <div class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800 rounded-b-xl"">
+                        {{ $users->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

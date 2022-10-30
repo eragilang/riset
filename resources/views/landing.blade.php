@@ -53,7 +53,7 @@
   <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+      <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>SKHB<span>.</span>IPB</h1>
@@ -65,18 +65,17 @@
             <ul>
                 @auth
                     @role('admin')
-                        <li><x-dropdown-link :href="route('users.index')">{{ __('Pengguna') }}</x-dropdown-link></li>
-                        <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
+                        {{-- <li><x-dropdown-link :href="route('filament.resources.users')">{{ __('Pengguna') }}</x-dropdown-link></li> --}}
+                        {{-- <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li> --}}
                         {{-- <x-dropdown-link :href="route('roles.index')">{{ __('Roles') }}</x-dropdown-link> --}}
                     @endrole
                     @role('dosen')
-                    <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
+                        <li><x-dropdown-link :href="route('hewan.index')">{{ __('Hewan') }}</x-dropdown-link></li>
                     @endrole
                 @endauth
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <li><x-dropdown-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
@@ -137,7 +136,7 @@
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#about">Get Started</a>
+      <a class="btn-getstarted scrollto" href="/admin">Pengaturan</a>
 
     </div>
   </header><!-- End Header -->
@@ -424,10 +423,10 @@
     <div class="row g-0 portfolio-container">
         @foreach ($hewan as $row)
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{ $row->id_genre }}">
-                <img src="{{ asset('img/'.$row->objek) }}" class="h-50 img-fluid" alt="">
+                <img src="{{ Storage::url($row->objek) }}" class="h-50 img-fluid" alt="">
                 <div class="portfolio-info">
                 <h4>{{ $row->nama }}</h4>
-                <a href="{{ asset('img/'.$row->objek) }}" title="Hewan {{ $row->nama }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{ Storage::url($row->objek) }}" title="Hewan {{ $row->nama }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="{{ route('hewan.detail', $row->id) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
             </div><!-- End Portfolio Item -->
