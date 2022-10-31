@@ -52,7 +52,7 @@ class CreateAnimalSeeder extends Seeder
             'id_genre' => $mamalia->id,
             'nama' => 'Kuda',
             'objek' => 'img/kuda.jpeg',
-            'editor' => '<div class="sketchfab-embed-wrapper"><iframe title="Horse-skeleton" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f3cbabd52905467884c6392963be0d38/embed"> </iframe></div>',
+            'editor' => '<div class="sketchfab-embed-wrapper"><iframe title="Horse-skeleton" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f3cbabd52905467884c6392963be0d38/embed?autostart=1&amp;internal=1&amp;tracking=0&amp;ui_ar=0&amp;ui_infos=0&amp;ui_snapshots=1&amp;ui_stop=0&amp;ui_theatre=1&amp;ui_watermark=0"> </iframe></div>',
             'keterangan' => 'Kuda adalah',
             'status' => 1,
         ]);

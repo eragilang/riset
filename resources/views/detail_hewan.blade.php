@@ -24,7 +24,7 @@
                 <p><b>Genre:</b> {{ ucfirst($hewan->genre->genre) }}</p>
             </div><!-- / project-info-box -->
             <div class="row">
-                <div class="col-md-12" id="editor-wrapper" style="height:500px">
+                <div class="col-md-12" id="editor-wrapper" style="height:1000px">
                     {!! $hewan->editor !!}
                 </div>
             </div>
@@ -474,8 +474,8 @@ b, strong {
 </style>
 
 <script type="text/javascript">
-    $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-100');
-    $(".sketchfab-embed-wrapper, .sketchfab-embed-wrapper iframe").addClass('w-100 h-100');
+    $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-75');
+    $(".sketchfab-embed-wrapper, .sketchfab-embed-wrapper iframe").addClass('w-100 h-50');
 </script>
 </body>
 </html>
