@@ -8,6 +8,7 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
 use Filament\Navigation\UserMenuItem;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.force_https')) {
+            URL::forceScheme('https');
+        }
+
         Filament::serving(function () {
             Filament::registerNavigationGroups([
                 NavigationGroup::make()
