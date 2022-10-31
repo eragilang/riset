@@ -474,8 +474,8 @@ b, strong {
 </style>
 
 <script type="text/javascript">
-    $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-75');
-    $(".sketchfab-embed-wrapper, .sketchfab-embed-wrapper iframe").addClass('w-100 h-50');
+    $("#editor-wrapper iframe, #editor-wrapper .sketchfab-embed-wrapper").addClass('w-100 h-100');
+    $(".sketchfab-embed-wrapper, .sketchfab-embed-wrapper iframe").addClass('w-100 h-100');
 </script>
 </body>
 </html>
