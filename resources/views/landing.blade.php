@@ -446,15 +446,42 @@
 
         <ul class="nav nav-tabs row gy-4 d-flex">
 
-            @foreach ($genre as $row)
-                <li class="nav-item col-6 col-md-4 col-lg-2">
+            <!-- @foreach ($genre as $row) -->
+                <!-- <li class="nav-item col-6 col-md-4 col-lg-2">
                     <a class="nav-link {{ $row->id == '1' ? "active show" : '' }}" data-bs-toggle="tab" data-bs-target="#tab-{{ $row->id }}">
                     <i class="bi bi-binoculars color-cyan"></i>
-                    <h4>{{ ucfirst($row->genre) }}</h4>
+                    <h4>VR Teknologi</h4>
                     </a>
-                </li><!-- End Tab 1 Nav -->
-            @endforeach
+                </li> -->
+                <!-- End Tab 1 Nav -->
+            <!-- @endforeach -->
+            <li class="nav-item col-6 col-md-4 col-lg-2">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                <i class="bi bi-easel color-blue"></i>
+                <h4>VR Teknologi</h4>
+              </a>
+            </li>
 
+            <li class="nav-item col-6 col-md-4 col-lg-2">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                <i class="bi bi-easel color-blue"></i>
+                <h4>Terverifikasi IPB</h4>
+              </a>
+            </li>
+
+            <li class="nav-item col-6 col-md-4 col-lg-2">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                <i class="bi bi-easel color-blue"></i>
+                <h4>Support Semua Perangkat</h4>
+              </a>
+            </li>
+
+            <li class="nav-item col-6 col-md-4 col-lg-2">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                <i class="bi bi-easel color-blue"></i>
+                <h4>3D Hewan</h4>
+              </a>
+            </li>
 
           <!--
           <li class="nav-item col-6 col-md-4 col-lg-2">
